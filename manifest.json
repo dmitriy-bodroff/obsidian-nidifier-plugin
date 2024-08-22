@@ -1,11 +1,11 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "obsidian-uidifier-plugin",
+	"name": "Obsidian Uidifier Plugin",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"description": "The plugin automatically assigns a unique identifier to the note.",
+	"author": "Dmitriy Bodroff",
+	"authorUrl": "https://the-digital-garden.ru",
+	"fundingUrl": "https://the-digital-garden.ru",
 	"isDesktopOnly": false
 }

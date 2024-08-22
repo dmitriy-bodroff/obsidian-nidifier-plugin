@@ -1,7 +1,7 @@
 {
-	"name": "obsidian-sample-plugin",
+	"name": "obsidian-uidifier-plugin",
 	"version": "1.0.0",
-	"description": "This is a sample plugin for Obsidian (https://obsidian.md)",
+	"description": "The plugin automatically assigns a unique identifier to the note",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
