@@ -1,4 +1,4 @@
-# Obsidian Uidifier Plugin
+# Obsidian Nidifier Plugin
 
 This is a sample plugin for Obsidian (https://obsidian.md).
 
