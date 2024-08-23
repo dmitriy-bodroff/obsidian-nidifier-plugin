@@ -2,24 +2,20 @@ import { App, ButtonComponent, Modal, Notice, Plugin, TFile } from 'obsidian';
 import { customAlphabet } from 'nanoid';
 import { i18n } from 'lang/helpers';
 
+const nanoid = customAlphabet('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz', 10);
+
 export default class NidifierPlugin extends Plugin {
 
     async onload() {
-        const nanoid = customAlphabet('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz', 10);
-
         const ribbonIconEl = this.addRibbonIcon('dices', i18n('Add or remove the note identifier (NID)'), (evt: MouseEvent) => {
             const file = this.app.workspace.getActiveFile();
             if (file instanceof TFile && file.extension === "md") {
                 this.app.fileManager.processFrontMatter(file, (frontmatter) => {
                     if (frontmatter.nid === undefined) {
-                        frontmatter.nid = nanoid();
-                        new Notice(i18n('The note identifier (NID) has been added'));
+                        this.addNid(frontmatter);
                     } else {
                         new NidRemovalConfirmationModal(this.app, () => {
-                            this.app.fileManager.processFrontMatter(file, (fm) => {
-                                delete fm.nid;
-                                new Notice(i18n('The note identifier (NID) has been removed'));
-                            });
+                            this.app.fileManager.processFrontMatter(file, (fm) => this.removeNid(fm));
                         }).open();
                     }
                 });
@@ -29,14 +25,23 @@ export default class NidifierPlugin extends Plugin {
 
         this.registerEvent(this.app.vault.on("create", (file) => {
             if (file instanceof TFile && file.extension === "md") {
-                this.app.fileManager.processFrontMatter(file, (frontmatter) => {
-                    if (frontmatter.nid === undefined) {
-                        frontmatter.nid = nanoid();
-                        new Notice(i18n('The note identifier (NID) has been added'));
-                    }
-                });
+                this.app.fileManager.processFrontMatter(file, (frontmatter) => this.addNid(frontmatter));
             }
         }));
+    }
+
+    addNid(frontmatter: any) {
+        if (frontmatter.nid === undefined) {
+            frontmatter.nid = nanoid();
+            new Notice(i18n('The note identifier (NID) has been added'));
+        }
+    }
+
+    removeNid(frontmatter: any) {
+        if (frontmatter.nid !== undefined) {
+            delete frontmatter.nid;
+            new Notice(i18n('The note identifier (NID) has been removed'));
+        }
     }
 }
 
@@ -51,8 +56,8 @@ export class NidRemovalConfirmationModal extends Modal {
 
     onOpen() {
         const { contentEl } = this;
- 
-        this.setTitle(i18n("Do you really want to remove the note identifier (NID)?"));
+
+        this.setTitle(i18n("Do you want to remove the note identifier (NID)?"));
 
         contentEl.createDiv({ cls: "nidifier-button-group-control" }, divEl => {
             new ButtonComponent(divEl)
