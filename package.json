@@ -1,6 +1,6 @@
 {
 	"name": "nidifier",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "The simple plugin that automatically assigns a unique identifier (NID) to a note",
 	"main": "main.js",
 	"scripts": {
