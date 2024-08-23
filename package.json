@@ -1,7 +1,7 @@
 {
 	"name": "obsidian-nidifier-plugin",
-	"version": "1.0.0",
-	"description": "The plugin automatically assigns a unique identifier to the note",
+	"version": "1.0.1",
+	"description": "The simple plugin that automatically assigns a unique identifier (NID) to a note",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",

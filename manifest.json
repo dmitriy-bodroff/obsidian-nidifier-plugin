@@ -1,11 +1,11 @@
 {
 	"id": "obsidian-nidifier-plugin",
 	"name": "Obsidian Nidifier Plugin",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"minAppVersion": "0.15.0",
-	"description": "The plugin automatically assigns a unique identifier (NID) to the note.",
+	"description": "The simple plugin that automatically assigns a unique identifier (NID) to a note.",
 	"author": "Dmitriy Bodroff",
 	"authorUrl": "https://the-digital-garden.ru",
-	"fundingUrl": "https://the-digital-garden.ru",
+	"fundingUrl": "https://boosty.to/dmitriy.bodroff/donate",
 	"isDesktopOnly": false
 }
